@@ -9,6 +9,7 @@ var merge = require('merge-stream');
 var path = require('path');
 var fs = require('fs');
 var glob = require('glob');
+var minifyHtml = require('gulp-minify-html');
 
 var mozjpeg = require('imagemin-mozjpeg');
 
@@ -35,6 +36,14 @@ gulp.task('styles', function () {
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe($.cssmin())
     .pipe(gulp.dest('build/stylesheets'));
+});
+
+gulp.task('html', function() {
+  return gulp.src('index.html')
+    .pipe(minifyHtml({
+      empty: true
+    }))
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('scripts', function() {

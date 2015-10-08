@@ -27,6 +27,7 @@
     "run-sequence": "^1.1.2"
   },
   "dependencies": {
+    "gulp-minify-html": "^1.0.4",
     "imagemin-mozjpeg": "^5.1.0"
   }
 }
