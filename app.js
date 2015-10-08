@@ -21,12 +21,12 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 app.use(compression());
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(appPath, express.static(path.join(__dirname, 'public')));
+app.use(appPath, express.static(path.join(__dirname, 'build')));
 
 app.use(appPath, index);
 
