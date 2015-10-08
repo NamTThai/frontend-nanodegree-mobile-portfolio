@@ -21,11 +21,11 @@ gulp.task('scripts', function() {
 
 gulp.task('images', function () {
   return gulp.src('public/img/**/*')
-    .pipe($.cache($.imagemin({
+    .pipe($.imagemin({
       progressive: true,
       interlaced: true
-    })))
-    .pipe(gulp.dest('build'));
+    }))
+    .pipe(gulp.dest('build/img'));
 });
 
 gulp.task('copy', function () {
