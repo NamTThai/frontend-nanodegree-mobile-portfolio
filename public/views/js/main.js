@@ -504,7 +504,7 @@ function updatePositions() {
 
   // Fix Force Synchronous Layout problem by running Layout before batch running Style
   var scrollTop = document.body.scrollTop;
-  
+
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
     items[i].style.left = (items[i].basicLeft + 100 * phase) + 'px';
@@ -521,7 +521,9 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
+window.addEventListener('scroll', function() {
+  requestAnimationFrame(updatePositions);
+});
 
 // Holds all .mover generated in the page
 var items = [];
