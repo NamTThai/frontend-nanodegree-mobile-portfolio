@@ -502,13 +502,12 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
-
   // Fix Force Synchronous Layout problem by running Layout before batch running Style
   var scrollTop = document.body.scrollTop;
+  
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.left = (items[i].basicLeft + 100 * phase) + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -524,11 +523,16 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
-// Generates the sliding pizzas when the page loads.
+// Holds all .mover generated in the page
+var items = [];
+
 document.addEventListener('DOMContentLoaded', function() {
+  // Dynamically calculate the number of pizzas needed to fillup the entier screen;
+  var rows = Math.floor(screen.height / 225);
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  var pizzanum = rows * cols;
+  for (var i = 0; i < pizzanum; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -537,6 +541,9 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
+    items.push(elem);
   }
+
+  // Create a global variable to store .mover items so that the browser doesn't have to rerun it at every frame
   updatePositions();
 });

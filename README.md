@@ -12,4 +12,6 @@
 ### Optimizations on pizza.html
 
 1. The first optimization is in `main.js#updatePositions()`. Here, `Force Synchronous Layout` problem is fixed by reading `document.body.scrollTop` before the applying style change.
-1. The second optimization that I made is to promote `.mover` to a different layer in `style.css`, before `.mover.style.left` is change quite often. 
+1. The second optimization that I made is to promote `.mover` to a different layer in `style.css`, before `.mover.style.left` is change quite often.
+1. The third optimization that I made is to reduce the number of `.mover`. `200` movers are not at all necessary. Number of `.mover` necessary is calculated dynamically. At this point, my fps is pretty close to 50-60fps
+1. 
