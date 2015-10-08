@@ -16,3 +16,5 @@
 1. The third optimization that I made is to reduce the number of `.mover`. `200` movers are not at all necessary. Number of `.mover` necessary is calculated dynamically.
 
 ### Optimization on resizing pizza
+
+1. The problem with resizing pizza is rather simple. It was only `Force Synchronous Layout`. To avoid this problem, all I had to do was doing batch Layout before batch Style update in `main.js#resizePizzas#changePizzaSizes`
