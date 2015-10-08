@@ -29,10 +29,13 @@ form {
   font-weight: 800;
 }
 
+/*Promote to a different layer, allowing for faster scrolling*/
 .mover {
   position: fixed;
   width: 256px;
   z-index: -1;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .randomPizzaContainer {
